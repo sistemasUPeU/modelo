@@ -23,7 +23,6 @@ public class RolDaoImp implements RolDao{
 		List<GrantedAuthority> autores = new ArrayList<>();
 		String SQL = "select *from rol";
 		List<Rol> roles = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<Rol>(Rol.class));
-
 		for(int i=0;i<roles.size();i++) {
 			autores.add(new SimpleGrantedAuthority(roles.get(i).getNomrol()));
 		}
