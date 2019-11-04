@@ -31,7 +31,8 @@ public class RolDaoImp implements RolDao{
 	@Override
 	public int create(Rol rol) {
 		// TODO Auto-generated method stub
-		return 0;
+		String SQL= "INSERT INTO ROL (IDROL,NOMROL) VALUES(NULL,?)";
+		return jdbcTemplate.update(SQL,rol.getNomrol());
 	}
 
 }
