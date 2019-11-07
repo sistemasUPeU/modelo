@@ -2,18 +2,21 @@ package com.example.demo.entity;
 
 public class Usuario {
 	private int idusuario;
-	private String nomuser;
-	private String clave;
+	private String username;
+	private String password;
 	private int idempleado;
+	private int enable;
 	
 	public Usuario() {
 	}
 
-	public Usuario(int idusuario, String nomuser, String clave, int idempleado) {
+	public Usuario(int idusuario, String username, String password, int idempleado, int enable) {
+		super();
 		this.idusuario = idusuario;
-		this.nomuser = nomuser;
-		this.clave = clave;
+		this.username = username;
+		this.password = password;
 		this.idempleado = idempleado;
+		this.enable = enable;
 	}
 
 	public int getIdusuario() {
@@ -24,20 +27,20 @@ public class Usuario {
 		this.idusuario = idusuario;
 	}
 
-	public String getNomuser() {
-		return nomuser;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNomuser(String nomuser) {
-		this.nomuser = nomuser;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getClave() {
-		return clave;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setClave(String clave) {
-		this.clave = clave;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public int getIdempleado() {
@@ -46,6 +49,14 @@ public class Usuario {
 
 	public void setIdempleado(int idempleado) {
 		this.idempleado = idempleado;
+	}
+
+	public int getEnable() {
+		return enable;
+	}
+
+	public void setEnable(int enable) {
+		this.enable = enable;
 	}
 
 	

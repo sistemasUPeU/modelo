@@ -2,26 +2,33 @@ package com.example.demo.entity;
 
 public class Rol {
 	private int idrol;
-	private String nomrol;
+	private String nombre;
 	
 	public Rol() {
 		super();
 	}
-	public Rol(int idrol, String nomrol) {
+
+	public Rol(int idrol, String nombre) {
+		super();
 		this.idrol = idrol;
-		this.nomrol = nomrol;
+		this.nombre = nombre;
 	}
+
 	public int getIdrol() {
 		return idrol;
 	}
+
 	public void setIdrol(int idrol) {
 		this.idrol = idrol;
 	}
-	public String getNomrol() {
-		return nomrol;
+
+	public String getNombre() {
+		return nombre;
 	}
-	public void setNomrol(String nomrol) {
-		this.nomrol = nomrol;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+	
 	
 }

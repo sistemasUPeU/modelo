@@ -23,7 +23,7 @@ public class UserLogin implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		Usuario login = userDao.validarUsuario(username);
-		UserDetails details = new User(login.getNomuser(),login.getClave(),rolDao.readAll());
+		UserDetails details = new User(login.getUsername(),login.getPassword(),rolDao.readAll(login.getIdusuario()));
 		return details;
 	}
 

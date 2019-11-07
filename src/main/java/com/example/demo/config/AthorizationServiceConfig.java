@@ -28,8 +28,8 @@ public class AthorizationServiceConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		// TODO Auto-generated method stub
-		clients.inMemory().withClient("musaApp")
-		.secret(passwordEncoder.encode("ch1ch0"))
+		clients.inMemory().withClient("musa")
+		.secret(passwordEncoder.encode("1234567"))
 		.scopes("red", "write")
 		.authorizedGrantTypes("password","refresh_token")
 		.accessTokenValiditySeconds(3600)

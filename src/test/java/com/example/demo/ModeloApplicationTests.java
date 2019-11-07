@@ -34,13 +34,13 @@ class ModeloApplicationTests {
 		cat.setNombre("Pastas");
 		assertTrue(categoriDao.create(cat)==0);
 	}
-*/
+
 	@Test
 	void validarUser() {
 		Usuario u = userDao.validarUsuario("dreyna");
 		assertTrue(u.getClave()!="dreyna");
 	}
-	/*
+	
 	@Test
 	void createUser() {
 		Usuario user = new Usuario(0, "jonasg", "12345", 20);
@@ -48,18 +48,31 @@ class ModeloApplicationTests {
 		
 	}
 	
-	@Test
-	void listRol() {
-		Rol r = new Rol(0, "jonasg");
-		assertTrue(rolDao.create(r)>0);
-		
-	}
+	
 	
     @Test
 	void autentificarUser() {
 		UserDetails details= userLogin.loadUserByUsername("dreyna");
 		assertTrue(details.getUsername().equals("dreyna"));
 	}
-	*/
 	
+
+    @Test
+   	void createRol() {
+    	Rol r = new Rol();
+    	r.setNomrol("karla");
+   		assertTrue(rolDao.create(r)>=0);
+   	}
+
+    @Test
+	void listRol() {
+		assertTrue(rolDao.readall()!=null);
+		
+	}
+	*/
+    @Test
+   	void eliminartRol() {
+   		assertTrue(rolDao.delete(23)>=0);
+   		
+   	}
 }
