@@ -69,10 +69,20 @@ class ModeloApplicationTests {
 		assertTrue(rolDao.readall()!=null);
 		
 	}
-	*/
+	
     @Test
    	void eliminartRol() {
    		assertTrue(rolDao.delete(23)>=0);
    		
+   	}
+   	
+    @Test
+   	void userDatosl() {
+   		assertTrue(userDao.datosUsuario("dreyna").equals("DAVID REYNA"));
+   	}
+    */
+    @Test
+   	void userDatosl() {
+   		assertTrue(userDao.readAll()!=null);
    	}
 }
