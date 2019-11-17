@@ -13,6 +13,6 @@ public interface RolDao {
 	int create(Rol rol);
 	int update(Rol rol);
 	int delete(int id);
-	Rol read(int id);
+	Map<String, Object> read(int id);
 	public Map<String, Object> readall();
 }

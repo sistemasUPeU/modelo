@@ -1,20 +1,14 @@
 package com.example.demo;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.example.demo.dao.CategoriaDao;
 import com.example.demo.dao.RolDao;
 import com.example.demo.dao.UsuarioDao;
-import com.example.demo.entity.Categoria;
-import com.example.demo.entity.Rol;
-import com.example.demo.entity.Usuario;
 import com.example.demo.serviceImp.UserLogin;
 
 @SpringBootTest
@@ -83,6 +77,6 @@ class ModeloApplicationTests {
     */
     @Test
    	void userDatosl() {
-   		assertTrue(userDao.readAll()!=null);
+   		assertTrue(rolDao.read(20)!=null);
    	}
 }

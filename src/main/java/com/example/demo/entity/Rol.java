@@ -3,15 +3,9 @@ package com.example.demo.entity;
 public class Rol {
 	private int idrol;
 	private String nombre;
+	private String detalle;
 	
 	public Rol() {
-		super();
-	}
-
-	public Rol(int idrol, String nombre) {
-		super();
-		this.idrol = idrol;
-		this.nombre = nombre;
 	}
 
 	public int getIdrol() {
@@ -29,6 +23,14 @@ public class Rol {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
+	}
+
 	
 }

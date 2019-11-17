@@ -1,5 +1,6 @@
 package com.example.demo.serviceImp;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ public class RolServiceImp implements RolService{
 		return rolDao.delete(id);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Rol read(int id) {
+	public Map<String, Object> read(int id) {
 		// TODO Auto-generated method stub
 		return rolDao.read(id);
 	}

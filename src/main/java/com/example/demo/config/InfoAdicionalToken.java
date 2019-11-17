@@ -19,7 +19,7 @@ public class InfoAdicionalToken implements TokenEnhancer{
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
 		// TODO Auto-generated method stub
 		Map<String, Object> info = new HashMap<>();
-		info.put("nombres", usuarioDao.datosUsuario(authentication.getName()));
+		info = usuarioDao.datosUsuario(authentication.getName());
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		return accessToken;
 	}

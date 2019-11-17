@@ -1,6 +1,5 @@
 package com.example.demo.daoImp;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +40,12 @@ public class UsuarioDaoImp implements UsuarioDao{
 		return jdbcTemplate.update(SQL,user.getUsername(),new BCryptPasswordEncoder().encode(user.getPassword()),user.getIdempleado(),1);
 	}
 	@Override
-	public String datosUsuario(String username) {
+	public Map<String, Object> datosUsuario(String username) {
 		// TODO Auto-generated method stub
-		String SQL = "select concat(e.nombres||' ', e.apellidos) as nombres from empleado e, usuario u "
+		String SQL = "select e.idempleado as idempleado, e.nombres as nombres, e.apellidos as apellidos from empleado e, usuario u "
 					+"where e.idempleado=u.idempleado and u.username=?";
 		Map<String, Object> map= jdbcTemplate.queryForMap(SQL, username);
-		return map.get("nombres").toString();
+		return map;
 	}
 	@Override
 	public Map<String, Object> readAll() {

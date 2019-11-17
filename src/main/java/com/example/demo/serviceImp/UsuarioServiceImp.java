@@ -25,7 +25,7 @@ public class UsuarioServiceImp implements UsuarioService{
 	}
 
 	@Override
-	public String datosUsuario(String username) {
+	public Map<String, Object> datosUsuario(String username) {
 		// TODO Auto-generated method stub
 		return usuarioDao.datosUsuario(username);
 	}

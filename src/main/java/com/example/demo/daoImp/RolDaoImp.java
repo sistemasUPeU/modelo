@@ -57,22 +57,18 @@ public class RolDaoImp implements RolDao{
 		return jdbcTemplate.update("call SP_ELIMINAR_ROL(?)",id);
 	}
 	@Override
-	public Rol read(int id) {//flata realizar el SP 2
-		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_READ_ROL").declareParameters(new SqlOutParameter("cat",OracleTypes
-				.CURSOR,new ColumnMapRowMapper()), new SqlParameter("idc", Types.INTEGER));
+	public Map<String, Object> read(int id) {//flata realizar el SP 2
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("sp_listar_rol_id").declareParameters(new SqlOutParameter("roles",OracleTypes.CURSOR,new ColumnMapRowMapper()), new SqlParameter("idc", Types.INTEGER));
 		SqlParameterSource in = new MapSqlParameterSource().addValue("idc", id);
-		Map<String, Object> out = simpleJdbcCall.execute(in);
-		Rol r = new Rol();
-		r.setIdrol((Integer)out.get("IDCATEGORIA"));
-		r.setNombre((String)out.get("NOMROL"));
-		return r;
+		Map<String, Object> map = simpleJdbcCall.execute(in);
+		return simpleJdbcCall.execute(in);
 	}
 	@Override
 	public Map<String, Object> readall() {
 		// TODO Auto-generated method stub
 		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("sp_listar_rol")
 				.declareParameters(new SqlOutParameter("roles",OracleTypes.CURSOR,new ColumnMapRowMapper()));
-		return (Map<String, Object>) simpleJdbcCall.execute();
+		return simpleJdbcCall.execute();
 	}
 
 }

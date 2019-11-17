@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
 public class JwtConfig {
-		public static final String LLAVE_SECRETA = "sistema.musa.upeu.12345670";
+		public static final String LLAVE_SECRETA = "musa.sistemas.upeu.12345670";
 		public static final String RSA_PUBLICA = "-----BEGIN PUBLIC KEY-----\r\n" + 
 				"MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKfpPTliPN0HJ8nSkj05EDAiQBKk9aKm\r\n" + 
 				"ePEArvpHWu5y1GEPL9bdlgF35ojnwAZcf9k5GRpyoXxl+1ZXiZI6NZECAwEAAQ==\r\n" + 
