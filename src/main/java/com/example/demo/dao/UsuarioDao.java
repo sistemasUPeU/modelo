@@ -9,4 +9,9 @@ public interface UsuarioDao {
 	int create(Usuario user);
 	Map<String, Object> datosUsuario(String username);
 	Map<String, Object> readAll();
+	int update(Usuario user);
+	int delete(int id);
+	Map<String, Object> read(int id);
+	int obtenerIdUsuario(String username);
+	int obtenerIdRol(String username);
 }

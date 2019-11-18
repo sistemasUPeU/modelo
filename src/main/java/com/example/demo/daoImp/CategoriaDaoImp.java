@@ -53,7 +53,8 @@ public class CategoriaDaoImp implements CategoriaDao{
 
 	@Override
 	public Categoria read(int id) {
-		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_READ_CATEGORIA").declareParameters(new SqlOutParameter("cat",OracleTypes
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_READ_CATEGORIA").
+				declareParameters(new SqlOutParameter("cat",OracleTypes
 				.CURSOR,new ColumnMapRowMapper()), new SqlParameter("idc", Types.INTEGER));
 		SqlParameterSource in = new MapSqlParameterSource().addValue("idc", id);
 		Map<String, Object> out = simpleJdbcCall.execute(in);

@@ -35,15 +35,15 @@ public class UsuarioDaoImp implements UsuarioDao{
 	@Override
 	public int create(Usuario user) {
 		// TODO Auto-generated method stub
-		String SQL = "INSERT INTO USUARIO(IDUSUARIO,USERNAME,CLAVE,IDEMPLEADO,ENABLE) VALUES(NULL,?,?,?,?)";
+		String SQL = "INSERT INTO USUARIO(IDUSUARIO,USERNAME,PASSWORD,IDEMPLEADO,ENABLE) VALUES(NULL,?,?,?,?)";
 		System.out.println(user.getIdempleado());
 		return jdbcTemplate.update(SQL,user.getUsername(),new BCryptPasswordEncoder().encode(user.getPassword()),user.getIdempleado(),1);
 	}
 	@Override
 	public Map<String, Object> datosUsuario(String username) {
 		// TODO Auto-generated method stub
-		String SQL = "select e.idempleado as idempleado, e.nombres as nombres, e.apellidos as apellidos from empleado e, usuario u "
-					+"where e.idempleado=u.idempleado and u.username=?";
+		String SQL = "select u.idusuario, r.idrol, r.detalle, u.username, e.nombres, e.apellidos from empleado e, usuario u, "
+					+"usuario_rol ur, rol r where u.idusuario = ur.idusuario and r.idrol=ur.idrol and e.idempleado=u.idempleado and u.username=?";
 		Map<String, Object> map= jdbcTemplate.queryForMap(SQL, username);
 		return map;
 	}
@@ -53,6 +53,37 @@ public class UsuarioDaoImp implements UsuarioDao{
 		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withProcedureName("SP_LISTAR_USUARIO")
 				.declareParameters(new SqlOutParameter("uuser",OracleTypes.CURSOR,new ColumnMapRowMapper()));
 		return (Map<String, Object>) simpleJdbcCall.execute();
+	}
+	@Override
+	public int update(Usuario user) {
+		// TODO Auto-generated method stub
+		String SQL = "UPDATE usuario SET password=? WHERE idusuario=?";		
+		return jdbcTemplate.update(SQL, new BCryptPasswordEncoder().encode(user.getPassword()), user.getIdusuario());
+	}
+	@Override
+	public int delete(int id) {
+		// TODO Auto-generated method stub
+		String SQL ="DELETE FROM usuario WHERE idusuario=?";
+		return jdbcTemplate.update(SQL, id);
+	}
+	@Override
+	public Map<String, Object> read(int id) {
+		// TODO Auto-generated method stub
+		String SQL ="SELECT *FROM usuario WHERE idusuario=?";
+		return null;
+	}
+	@Override
+	public int obtenerIdUsuario(String username) {
+		// TODO Auto-generated method stub
+		String SQL = "select u.idusuario from rol r, usuario u, usuario_rol ur"+
+		" where r.idrol=ur.idrol and u.idusuario=ur.idusuario and u.username = ?";
+		return this.jdbcTemplate.queryForObject(SQL, new Object[] {username}, Integer.class).intValue();
+	}
+	@Override
+	public int obtenerIdRol(String username) {
+		String SQL1 = "select r.idrol from rol r, usuario u, usuario_rol ur"+
+				" where r.idrol=ur.idrol and u.idusuario=ur.idusuario and u.username = ?";
+		return this.jdbcTemplate.queryForObject(SQL1, new Object[] {username}, Integer.class).intValue();
 	}
 
 }

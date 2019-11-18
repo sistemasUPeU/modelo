@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.dao.CategoriaDao;
+import com.example.demo.dao.OpcionesDao;
 import com.example.demo.dao.RolDao;
 import com.example.demo.dao.UsuarioDao;
+import com.example.demo.entity.Usuario;
 import com.example.demo.serviceImp.UserLogin;
 
 @SpringBootTest
@@ -21,6 +23,8 @@ class ModeloApplicationTests {
     RolDao rolDao;
     @Autowired
     UserLogin userLogin;
+    @Autowired
+    OpcionesDao opcionesDao;
     /*
 	@Test
 	void registrarCategoria() {
@@ -37,12 +41,12 @@ class ModeloApplicationTests {
 	
 	@Test
 	void createUser() {
-		Usuario user = new Usuario(0, "jonasg", "12345", 20);
-		assertTrue(userDao.create(user)>0);
+		Usuario user = new Usuario(0, "ana", "789", 21,1);
+		assertTrue(userDao.create(user)>=0);
 		
 	}
 	
-	
+
 	
     @Test
 	void autentificarUser() {
@@ -74,9 +78,17 @@ class ModeloApplicationTests {
    	void userDatosl() {
    		assertTrue(userDao.datosUsuario("dreyna").equals("DAVID REYNA"));
    	}
-    */
+   
     @Test
    	void userDatosl() {
-   		assertTrue(rolDao.read(20)!=null);
-   	}
+    	Usuario u = new Usuario();
+    	u.setIdusuario(21);
+    	u.setPassword("456");
+   		assertTrue(userDao.update(u)>=0);
+   	} 
+    @Test
+   	void userDatosl() {
+   		//assertTrue(opcionesDao.listarOpciones(19, "dreyna").size()>0);
+    }
+   */
 }
