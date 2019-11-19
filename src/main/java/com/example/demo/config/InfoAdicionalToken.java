@@ -26,9 +26,9 @@ public class InfoAdicionalToken implements TokenEnhancer{
 		Map<String, Object> info2 = new HashMap<>();
 		int idr = usuarioDao.obtenerIdRol(authentication.getName());
 		System.out.println(idr);
-		info2=opcionesDao.listarOpciones(idr);
-		//info1 = usuarioDao.datosUsuario(authentication.getName());		
-		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info2);
+		//info2=opcionesDao.listarOpciones(idr);
+		info1 = usuarioDao.datosUsuario(authentication.getName());		
+		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info1);
 		
 		return accessToken;
 	}

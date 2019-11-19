@@ -22,6 +22,7 @@ public class ResourceServiceConfig extends ResourceServerConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests().antMatchers(HttpMethod.GET,"/home").permitAll()
+		.antMatchers(HttpMethod.GET,"/opciones").permitAll()
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 	}
